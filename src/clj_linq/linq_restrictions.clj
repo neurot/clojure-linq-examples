@@ -41,17 +41,32 @@
     (doseq [p expensive-in-stock-products]
       (println (:product-name p) "is in stock and costs more than 3.00"))))
 
-
-
-
-
-
 (defn linq3-1 []
   (let [products products-list
         expensive-in-stock-products (filter #(> 0 (:unit-in-stock (> 3 (:unit-price %)))) products-list)]
     (println "In-stock products that cost more than 3.00:")
     (doseq [p expensive-in-stock-products]
       (println (:product-name p) "is in stock and costs more than 3.00"))))
+
+(defn linq4 []
+  (let [customers customers-list
+        wa-customers (filter #(= (:region %) "WA") customers)]
+    (println "Customers from Washington and their orders:")
+    (doseq [c wa-customers]
+      (println "Customer" (:customer-id c) ": " (:company-name c) ":")
+      (doseq [o (:orders c)]
+        (println "      Order" (:order-id o) ":" (:order-date o))))))
+
+
+
+
+
+
+
+
+
+
+
 
 
 
